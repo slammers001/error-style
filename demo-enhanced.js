@@ -1,4 +1,4 @@
-import { prettyError, setupGlobalErrorHandlers, ruleEngine, coreRules } from './dist/index.js';
+import { prettyError, setupGlobalErrorHandlers, getErrorCount } from './dist/index.js';
 
 console.log('🚀 Enhanced error-style demo\n');
 
@@ -51,3 +51,4 @@ try {
 }
 
 console.log('\n✅ Enhanced demo complete!');
+console.log(`📈 Total errors processed: ${getErrorCount()}`);

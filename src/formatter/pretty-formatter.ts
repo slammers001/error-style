@@ -13,6 +13,7 @@ export interface FormatterOptions {
 
 export class PrettyFormatter {
   private options: FormatterOptions;
+  private static errorCount = 0;
   
   constructor(options: FormatterOptions = {}) {
     this.options = {
@@ -31,11 +32,20 @@ export class PrettyFormatter {
    * Format an error with rule matching
    */
   formatError(error: Error, ruleMatch: RuleMatch | null, context?: ErrorContext): string {
+    PrettyFormatter.errorCount++;
+    
     if (!ruleMatch) {
       return this.formatUnknownError(error, context);
     }
 
     return this.formatKnownError(error, ruleMatch, context);
+  }
+
+  /**
+   * Get total errors processed
+   */
+  static getErrorCount(): number {
+    return PrettyFormatter.errorCount;
   }
 
   /**
