@@ -105,6 +105,18 @@ export class PrettyFormatter {
     output += `${colors.white}  ├── Check variable values${colors.reset}\n`;
     output += `${colors.white}  └── Search online for error${colors.reset}\n`;
     
+    // Show what to look at
+    output += `\n${colors.brightYellow}👀 LOOK AT:${colors.reset}\n`;
+    
+    // Extract actual file and line from stack trace
+    const stackInfo = this.extractStackInfo(error.stack);
+    if (stackInfo.file) {
+      output += `${colors.yellow}  • File: ${stackInfo.file}${colors.reset}\n`;
+    }
+    if (stackInfo.line) {
+      output += `${colors.yellow}  • Line: ${stackInfo.line}${colors.reset}\n`;
+    }
+    
     return output;
   }
 
