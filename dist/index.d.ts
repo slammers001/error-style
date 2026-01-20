@@ -1,15 +1,8 @@
-export interface ErrorExplanation {
-    message: string;
-    reason: string;
-    fix: string;
-    suggestions?: string[];
-}
-export interface PrettyTryResult<T> {
-    success: boolean;
-    data?: T;
-    error?: ErrorExplanation;
-}
-export declare function prettyTry<T>(fn: () => T): PrettyTryResult<T>;
-export declare function prettyTryAsync<T>(fn: () => Promise<T>): Promise<PrettyTryResult<T>>;
-export declare function formatError(errorExplanation: ErrorExplanation): string;
-export declare function logError(errorExplanation: ErrorExplanation): void;
+export type { ErrorExplanation, PrettyTryResult } from './types/index.js';
+export type { ErrorRule, RuleMatch, ErrorContext } from './rules/types.js';
+export { prettyTry, prettyTryAsync, formatError, logError } from './core/index.js';
+export { RuleEngine, ruleEngine } from './engine/rule-engine.js';
+export { PrettyFormatter, prettyFormatter } from './formatter/pretty-formatter.js';
+export { setupGlobalErrorHandlers } from './utils/global-handlers.js';
+export { coreRules } from './rules/core-rules.js';
+export { prettyError } from './core/pretty-error.js';
