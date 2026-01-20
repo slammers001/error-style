@@ -50,10 +50,4 @@ try {
   console.log(prettyError(error));
 }
 
-// Show rule engine stats
-console.log('\n--- Rule Engine Stats ---');
-console.log('Total rules:', ruleEngine.getStats().totalRules);
-console.log('By category:', ruleEngine.getStats().byCategory);
-console.log('By severity:', ruleEngine.getStats().bySeverity);
-
 console.log('\n✅ Enhanced demo complete!');
